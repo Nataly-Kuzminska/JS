@@ -1,10 +1,10 @@
 'use strict';
-let money = prompt('Какой ваш месячный доход?');
+let money = +prompt('Какой ваш месячный доход?');
 let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 let deposit = !!(prompt('Есть ли у вас депозит в банке'));
 let expences1 = prompt('Введите обязательную статью расходов');
-let expences2 = prompt('Введите обязательную статью расходов');
 let amount1 = +(prompt('Во сколько это обойдется?'));
+let expences2 = prompt('Введите обязательную статью расходов');
 let amount2 = +(prompt('Во сколько это обойдется?'));
 let budgetMonth = amount1 + amount2;
 let mission = 400000;
