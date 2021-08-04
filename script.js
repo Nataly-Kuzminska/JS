@@ -1,36 +1,57 @@
 'use strict';
-let money = +prompt('Какой ваш месячный доход?');
+let money;
 let income = 'Фриланс';
 let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 let deposit = confirm('Есть ли у вас депозит в банке?');
-let expences1 = prompt('Введите обязательную статью расходов?');
-let amount1 = +(prompt('Во сколько это обойдется?'));
-let expences2 = prompt('Введите обязательную статью расходов');
-let amount2 = +(prompt('Во сколько это обойдется?'));
-let budgetDay = money - accumulatedMonth();
+let accumulatedMonth;
+let budgetDay;
 let mission = 400000;
 let period = 4;
+let expencesAmount;
+let expences = [];
+
+let isNumber = function(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+
+let start = function() {
+  do {
+  money = prompt('Ваш месячный доход?');
+  }
+  while(!isNumber(money));
+  
+};
 
 let showTypeOf = function(item) {
   console.log(typeof item);
 };
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+
 
 let getExpencesMonth = function() {
-  return amount1 + amount2;
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+  while(isNumber(expences[i])) {
+  expences[i] = prompt('Введите обязательную статью расходов');
+
+  sum += +prompt('Во сколько это обойдется?'); 
+  }
+  }
+  return sum;
 };
 
 let getAccumulatedMonth = function() {
-  return money - getExpencesMonth();
+  return money - expencesAmount;
 };
-
-let accumulatedMonth = getAccumulatedMonth();
 
 
 let getTargetMonth = function() {
+  if(getTargetMonth < 0) {
+    prompt('Цель не будет достигнута');
+  } else {
   return mission/accumulatedMonth;
+  }
 };
 
 function getStatusIncome(budgetDay) {
@@ -45,14 +66,23 @@ if (budgetDay >= 1200) {
 }
 }
 
-showTypeOf();
+expencesAmount = getExpencesMonth();
+accumulatedMonth = getAccumulatedMonth();
+budgetDay = money - accumulatedMonth;
+
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
+
 getExpencesMonth();
 getTargetMonth();
 getStatusIncome();
-console.log('Расходы за месяц: ' + getExpencesMonth());
+
+console.log('Расходы за месяц: ' + expencesAmount);
 console.log(addExpences.split(','));
 console.log(budgetDay);
 console.log(period);
+console.log(expences);
 
 
 
