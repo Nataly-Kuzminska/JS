@@ -72,9 +72,10 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
+
+getStatusIncome();
 start();
 getTargetMonth();
-getStatusIncome();
 expencesAmount = getExpencesMonth();
 accumulatedMonth = getAccumulatedMonth();
 budgetDay = money - accumulatedMonth;
