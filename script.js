@@ -5,7 +5,7 @@ let addExpences = prompt('Перечислите возможные расход
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let accumulatedMonth;
 let budgetDay;
-let mission = 400000;
+let mission = 400000; 
 let period = 4;
 let expencesAmount;
 let expences = [];
@@ -32,12 +32,12 @@ let getExpencesMonth = function() {
   let sum = 0;
 
   for (let i = 0; i < 2; i++) {
-  while(isNumber(expences[i])) {
+  
   expences[i] = prompt('Введите обязательную статью расходов');
 
   sum += +prompt('Во сколько это обойдется?'); 
   }
-  }
+  console.log(sum); 
   return sum;
 };
 
@@ -74,6 +74,7 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
+start();
 getExpencesMonth();
 getTargetMonth();
 getStatusIncome();
@@ -83,6 +84,7 @@ console.log(addExpences.split(','));
 console.log(budgetDay);
 console.log(period);
 console.log(expences);
+
 
 
 
