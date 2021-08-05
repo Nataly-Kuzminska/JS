@@ -66,18 +66,18 @@ if (budgetDay >= 1200) {
 }
 }
 
-expencesAmount = getExpencesMonth();
-accumulatedMonth = getAccumulatedMonth();
-budgetDay = money - accumulatedMonth;
+
 
 showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
 start();
-getExpencesMonth();
 getTargetMonth();
 getStatusIncome();
+expencesAmount = getExpencesMonth();
+accumulatedMonth = getAccumulatedMonth();
+budgetDay = money - accumulatedMonth;
 
 console.log('Расходы за месяц: ' + expencesAmount);
 console.log(addExpences.split(','));
