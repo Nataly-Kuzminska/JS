@@ -1,14 +1,49 @@
 'use strict';
 let money;
-let income = 'Фриланс';
-let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-let deposit = confirm('Есть ли у вас депозит в банке?');
 let accumulatedMonth;
 let budgetDay;
-let mission = 400000; 
-let period = 4;
 let expencesAmount;
 let expences = [];
+
+let appData = {
+  income: {},
+  budget: money,
+  budgetDay: 0, 
+  budgetMonth: 0,
+  expencesMonth: 0,
+  addIncome: [],
+  expences: {},
+  addExpences: [],
+  deposit: false,
+  mission: 50000,
+  period: 3,
+  asking: function() {
+  let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+  appData.addExpences = addExpences.toLowerCase().split(',');
+  appData.deposit = confirm('Есть ли у вас депозит в банке?');
+  },
+  getExpencesMonth: function() {
+  let sum = 0;
+  for (let i = 0; i < 2; i++) {
+  expences[i] = prompt('Введите обязательную статью расходов');
+  sum += +prompt('Во сколько это обойдется?'); 
+  }
+  console.log(sum); 
+  return sum;
+  }
+  };
+  getAccumulatedMonth: function() {
+  return money - expencesAmount;
+  },
+  getTargetMonth: function() {
+  if(getTargetMonth() < 0) {
+    prompt('Цель не будет достигнута');
+  } else {
+  return appData.mission/ appData.getAccumulatedMonth();
+  }
+  },
+
+
 
 let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -23,36 +58,6 @@ let start = function() {
   
 };
 
-let showTypeOf = function(item) {
-  console.log(typeof item);
-};
-
-
-let getExpencesMonth = function() {
-  let sum = 0;
-
-  for (let i = 0; i < 2; i++) {
-  
-  expences[i] = prompt('Введите обязательную статью расходов');
-
-  sum += +prompt('Во сколько это обойдется?'); 
-  }
-  console.log(sum); 
-  return sum;
-};
-
-let getAccumulatedMonth = function() {
-  return money - expencesAmount;
-};
-
-
-let getTargetMonth = function() {
-  if(getTargetMonth < 0) {
-    prompt('Цель не будет достигнута');
-  } else {
-  return mission/accumulatedMonth;
-  }
-};
 
 function getStatusIncome(budgetDay) {
 if (budgetDay >= 1200) {
@@ -67,23 +72,17 @@ if (budgetDay >= 1200) {
 }
 
 
-
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
-
-
-getStatusIncome();
+isNumber();
+getStatusIncome(budgetDay);
 start();
 getTargetMonth();
-expencesAmount = getExpencesMonth();
+appData.getExpencesMonth();
 accumulatedMonth = getAccumulatedMonth();
 budgetDay = money - accumulatedMonth;
 
 console.log('Расходы за месяц: ' + expencesAmount);
-console.log(addExpences.split(','));
 console.log(budgetDay);
-console.log(period);
+console.log(appData.period);
 console.log(expences);
 
 
