@@ -20,16 +20,17 @@ let appData = {
   mission: 50000,
   period: 3,
   asking: function() {
-    for (let key in appData.expences) {
-    expences[i] = prompt('Введите обязательную статью расходов');
+    for (let i= 0; i < 2; i++) {
+    const expences = {}
+    appData.expences[prompt('Введите обязательную статью расходов')] = '+prompt('Во сколько это обойдется?)',
     sum += +prompt('Во сколько это обойдется?'); 
-    }
+    };
     let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
     appData.addExpences = addExpences.toLowerCase().split(',');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     },
-  getExpencesMonth: function() {
-    let sum = 0;
+  getExpencesMonth: function(sum) {
+    for
     console.log(sum); 
     return sum;
     }
