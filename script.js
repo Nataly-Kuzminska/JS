@@ -4,6 +4,7 @@ let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
+let expencesMonth;
 
 let money,
 start = function() {
@@ -39,8 +40,8 @@ let appData = {
     }
     },
   getExpencesMonth: function() {
-    for(let key in appData.addExpences) {
-    appData.expences += appData.addExpences[key];
+    for(let key in appData.expences) {
+     expencesMonth += appData.expences[key];
     }
     },
   getBudget: function() {
@@ -76,9 +77,9 @@ let appData = {
     appData.getExpencesMonth();
     appData.getBudget();
     appData.getTargetMonth();
-    appData.getStatusIncome(appData.budgetDay);
+    appData.getStatusIncome();
   
-    console.log('Расходы за месяц: ' + appData.getExpencesMonth());
-    console.log(appData.getTargetMonth());
+    console.log('Расходы за месяц: ' + appData.expencesMonth);
+    console.log(appData.period);
     console.log(appData.getStatusIncome());
 
