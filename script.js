@@ -4,7 +4,6 @@ let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let expencesMonth;
 
 let money,
 start = function() {
@@ -41,7 +40,7 @@ let appData = {
     },
   getExpencesMonth: function() {
     for(let key in appData.expences) {
-     expencesMonth += appData.expences[key];
+     appData.expencesMonth += appData.expences[key];
     }
     },
   getBudget: function() {
