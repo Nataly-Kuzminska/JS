@@ -32,15 +32,30 @@ let appData = {
   mission: 50000,
   period: 3,
   asking: function() {
-
     if(confirm('Есть ли у вас дополнительный источник заработка?')) {
-      let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
-      let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', '10000');
+    let itemIncome,
+    startTwo = function() {
+    do {
+      itemIncome = prompt('Какой у вас дополнительный заработок?');
+    }
+      while(!String(itemIncome));
+    };
+    startTwo();
+
+    let cashIncome,
+    startThree = function() {
+    do {
+    cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
+     }
+    while(!isNumber(cashIncome)); 
+  };
+    startThree();
+ 
       appData.income[itemIncome] = cashIncome;
     }
 
     let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-    appData.addExpences = addExpences.toLowerCase().split(',');
+    appData.addExpences = addExpences.toLowerCase().split(','); 
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 0; i < 2; i++) {
@@ -49,7 +64,7 @@ let appData = {
     },
   getExpencesMonth: function() {
     for(let key in appData.expences) {
-     appData.expencesMonth += +appData.expences[key];
+    appData.expencesMonth += +appData.expences[key];
     }
     },
   getBudget: function() {
@@ -99,4 +114,5 @@ let appData = {
     console.log('Расходы за месяц: ' + appData.expencesMonth);
     console.log(appData.period);
     console.log(appData.getStatusIncome());
+
 
