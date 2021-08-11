@@ -40,12 +40,12 @@ let appData = {
     },
   getExpencesMonth: function() {
     for(let key in appData.expences) {
-     appData.expencesMonth += appData.expences[key];
+     appData.expencesMonth += +appData.expences[key];
     }
     },
   getBudget: function() {
     appData.budgetMonth = appData.budget - appData.expencesMonth;
-    appData.budgetDay = appData.budgetMonth/30;
+    appData.budgetDay = Math.floor(appData.budgetMonth/30);
     },
 
   getTargetMonth: function() {
