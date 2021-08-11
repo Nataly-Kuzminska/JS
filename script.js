@@ -55,7 +55,9 @@ let appData = {
     }
 
     let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-    appData.addExpences = addExpences.toLowerCase().split(','); 
+    appData.addExpences = addExpences.toLowerCase().split(', '); 
+    addExpences.map(word => word[0].toUpperCase() + word.substring(1).join(' '));
+    console.log(appData.addExpences);
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 0; i < 2; i++) {
@@ -91,9 +93,13 @@ let appData = {
     },
   getInfoDeposit: function() {
     if(appData.deposit) {
-      appData.percentDepozit = prompt('Какой годовой процент?', '10');
-      appData.moneyDeposit = prompt('Какая сумма заложена?');
+    while(!isNumber(appData.percentDepozit)) {
+    prompt('Какой годовой процент?');
     }
+    while(!isNumber(appData.moneyDepozit)) {
+    appData.moneyDeposit = prompt('Какая сумма заложена?');
+    }
+   }
   },
   calcSavedMoney: function() {
     return appData.budgetMonth * appData.period;
