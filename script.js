@@ -56,7 +56,6 @@ let appData = {
 
     let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
     appData.addExpences = addExpences.toLowerCase().split(', '); 
-    addExpences.map(word => word[0].toUpperCase() + word.substring(1).join(' '));
     console.log(appData.addExpences);
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
