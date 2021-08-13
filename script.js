@@ -98,12 +98,12 @@ let appData = {
   getInfoDeposit: function() {
     if(appData.deposit) {
       do {
-      appData.moneyDeposit = prompt('Какая сумма заложена?');
+      appData.moneyDeposit = +prompt('Какая сумма заложена?');
       }
     while(!isNumber(appData.moneyDepozit));
 
       do {
-      appData.percentDepozit = prompt('Какой годовой процент?');
+      appData.percentDepozit = +prompt('Какой годовой процент?');
       }
     while(!isNumber(appData.percentDepozit));
    }
@@ -175,4 +175,3 @@ console.log(depositAmount);
 console.log(depositPercent);
 console.log(targetAmount);
 console.log(periodSelect);
-console/
