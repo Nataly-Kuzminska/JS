@@ -131,4 +131,34 @@ let appData = {
     console.log(appData.period);
     console.log(appData.getStatusIncome());
 
+// 9 урок //
+const additionalExpencesItem = document.querySelector('.additional_expenses-item');
+const depositAmount = document.querySelector('.deposit-amount');
+const depositPercent = document.querySelector('.deposit-percent');
+const targetAmount = document.querySelector('.target-amount');
+const periodSelect = document.querySelector('.period-select');
+
+
+console.log(button);
+console.log(buttonPlusIncome);
+console.log(buttonPlusExpences);
+console.log(additionalIncomeButton)
+console.log(budgetDayValue);
+console.log(expencesMonthValue);
+console.log(additionalIncomeValue);
+console.log(totalAdditionalExpences);
+console.log(incomePeriodValue);
+console.log(targetMonthValue);
+console.log(salaryAmount);
+console.log(incomeTitle);
+console.log(incomeAmount);
+console.log(expencesTitle);
+console.log(expencesAmount);
+console.log(additionalExpencesItem);
+console.log(depositAmount);
+console.log(depositPercent);
+console.log(targetAmount);
+console.log(periodSelect);
+
+
 
