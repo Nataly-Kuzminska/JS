@@ -132,6 +132,22 @@ let appData = {
     console.log(appData.getStatusIncome());
 
 // 9 урок //
+const button = document.getElementById('start');
+const buttonPlusIncome = document.getElementsByTagName('button')[0];
+const buttonPlusExpences = document.getElementsByTagName('button')[1];
+const checkBox = document.querySelector('#deposit-check');
+const additionalIncomeButton = document.querySelectorAll('additional_income-item');
+const budgetDayValue = document.getElementsByClassName('result-total budget_day-value');
+const expencesMonthValue = document.getElementsByClassName('result-total expenses_month-value');
+const additionalIncomeValue = document.getElementsByClassName('result-total additional_income-value');
+const totalAdditionalExpences = document.getElementsByClassName('result-total additional_expenses-value');
+const incomePeriodValue = document.getElementsByClassName('result-total income_period-value');
+const targetMonthValue =document.getElementsByClassName('result-total target_month-value');
+const salaryAmount = document.querySelector('.salary-amount');
+const incomeTitle = document.querySelector('.income-title');
+const incomeAmount = document.querySelector('.income-amount');
+const expencesTitle = document.querySelector('.expenses-title');
+const expencesAmount = document.querySelector('.expenses-amount');
 const additionalExpencesItem = document.querySelector('.additional_expenses-item');
 const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
@@ -142,7 +158,7 @@ const periodSelect = document.querySelector('.period-select');
 console.log(button);
 console.log(buttonPlusIncome);
 console.log(buttonPlusExpences);
-console.log(additionalIncomeButton)
+console.log(additionalIncomeButton);
 console.log(budgetDayValue);
 console.log(expencesMonthValue);
 console.log(additionalIncomeValue);
@@ -159,6 +175,4 @@ console.log(depositAmount);
 console.log(depositPercent);
 console.log(targetAmount);
 console.log(periodSelect);
-
-
-
+console/
