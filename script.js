@@ -27,7 +27,7 @@ let appData = {
   expences: {},
   addExpences: [],
   deposit: false,
-  percentDepozit: 0,
+  percentDeposit: 0,
   moneyDeposit: 0, 
   mission: 50000,
   period: 3,
@@ -112,14 +112,14 @@ let appData = {
   getInfoDeposit: function() {
     if(appData.deposit) {
       do {
-      appData.moneyDepozit = prompt('Какая сумма заложена?');
+      appData.moneyDeposit = prompt('Какая сумма заложена?');
       }
-    while(!isNumber(appData.moneyDepozit));
+    while(!isNumber(appData.moneyDeposit));
 
       do {
-      appData.percentDepozit = prompt('Какой годовой процент?');
+      appData.percentDeposit = prompt('Какой годовой процент?');
       }
-    while(!isNumber(appData.percentDepozit));
+    while(!isNumber(appData.percentDeposit));
    }
   },
 
