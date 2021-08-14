@@ -62,11 +62,25 @@ let appData = {
     appData.addExpences = newArray;
      console.log(appData.addExpences);
     }
-    appData.deposit = confirm('Есть ли у вас депозит в банке?');
+
 
     for (let i = 0; i < 2; i++) {
-    appData.expences[prompt('Введите обязательную статью расходов')] = +prompt('Во сколько это обойдется?');
+    let str;
+    let num;
+    do {
+    str = prompt('Введите обязательную статью расходов');
     }
+    while (isNumber(str));
+
+    do {
+    num = prompt('Во сколько это обойдется?');
+    }
+    while(!isNumber(num));
+     appData.expences[str] = num;
+    }
+
+       appData.deposit = confirm('Есть ли у вас депозит в банке?');
+
     },
   getExpencesMonth: function() {
     for(let key in appData.expences) {
@@ -98,12 +112,12 @@ let appData = {
   getInfoDeposit: function() {
     if(appData.deposit) {
       do {
-      appData.moneyDeposit = +prompt('Какая сумма заложена?');
+      appData.moneyDepozit = prompt('Какая сумма заложена?');
       }
     while(!isNumber(appData.moneyDepozit));
 
       do {
-      appData.percentDepozit = +prompt('Какой годовой процент?');
+      appData.percentDepozit = prompt('Какой годовой процент?');
       }
     while(!isNumber(appData.percentDepozit));
    }
