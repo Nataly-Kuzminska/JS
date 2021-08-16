@@ -1,4 +1,27 @@
 'use strict';
+const button = document.getElementById('start');
+const buttonPlusIncome = document.getElementsByTagName('button')[0];
+const buttonPlusExpences = document.getElementsByTagName('button')[1];
+const checkBox = document.querySelector('#deposit-check');
+const additionalIncomeButton1 = document.querySelectorAll('.additional_income-item')[0];
+const additionalIncomeButton2 = document.querySelectorAll('.additional_income-item')[1];
+const budgetDayValue = document.querySelector('.result-total.budget_day-value');
+const expencesMonthValue = document.querySelector('.result-total.expenses_month-value');
+const additionalIncomeValue = document.querySelector('.result-total.additional_income-value');
+const totalAdditionalExpences = document.querySelector('.result-total.additional_expenses-value');
+const incomePeriodValue = document.querySelector('.result-total.income_period-value');
+const targetMonthValue =document.querySelector('.result-total.target_month-value');
+const salaryAmount = document.querySelector('.salary-amount');
+const incomeTitle = document.querySelector('.income-title');
+const incomeAmount = document.querySelector('.income-amount');
+const expencesTitle = document.querySelector('.expenses-title');
+const expencesAmount = document.querySelector('.expenses-amount');
+const additionalExpencesItem = document.querySelector('.additional_expenses-item');
+const depositAmount = document.querySelector('.deposit-amount');
+const depositPercent = document.querySelector('.deposit-percent');
+const targetAmount = document.querySelector('.target-amount');
+const periodSelect = document.querySelector('.period-select');
+
 
 let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -131,47 +154,24 @@ let appData = {
     console.log(appData.period);
     console.log(appData.getStatusIncome());
 
-// 9 урок //
-const button = document.getElementById('start');
-const buttonPlusIncome = document.getElementsByTagName('button')[0];
-const buttonPlusExpences = document.getElementsByTagName('button')[1];
-const checkBox = document.querySelector('#deposit-check');
-const additionalIncomeButton = document.querySelectorAll('additional_income-item');
-const budgetDayValue = document.getElementsByClassName('result-total budget_day-value');
-const expencesMonthValue = document.getElementsByClassName('result-total expenses_month-value');
-const additionalIncomeValue = document.getElementsByClassName('result-total additional_income-value');
-const totalAdditionalExpences = document.getElementsByClassName('result-total additional_expenses-value');
-const incomePeriodValue = document.getElementsByClassName('result-total income_period-value');
-const targetMonthValue =document.getElementsByClassName('result-total target_month-value');
-const salaryAmount = document.querySelector('.salary-amount');
-const incomeTitle = document.querySelector('.income-title');
-const incomeAmount = document.querySelector('.income-amount');
-const expencesTitle = document.querySelector('.expenses-title');
-const expencesAmount = document.querySelector('.expenses-amount');
-const additionalExpencesItem = document.querySelector('.additional_expenses-item');
-const depositAmount = document.querySelector('.deposit-amount');
-const depositPercent = document.querySelector('.deposit-percent');
-const targetAmount = document.querySelector('.target-amount');
-const periodSelect = document.querySelector('.period-select');
-
-
-console.log(button);
-console.log(buttonPlusIncome);
-console.log(buttonPlusExpences);
-console.log(additionalIncomeButton);
-console.log(budgetDayValue);
-console.log(expencesMonthValue);
-console.log(additionalIncomeValue);
-console.log(totalAdditionalExpences);
-console.log(incomePeriodValue);
-console.log(targetMonthValue);
-console.log(salaryAmount);
-console.log(incomeTitle);
-console.log(incomeAmount);
-console.log(expencesTitle);
-console.log(expencesAmount);
-console.log(additionalExpencesItem);
-console.log(depositAmount);
-console.log(depositPercent);
-console.log(targetAmount);
-console.log(periodSelect);
+    console.log(button);
+    console.log(buttonPlusIncome);
+    console.log(buttonPlusExpences);
+    console.log(additionalIncomeButton1);
+    console.log(additionalIncomeButton2);
+    console.log(budgetDayValue);
+    console.log(expencesMonthValue);
+    console.log(additionalIncomeValue);
+    console.log(totalAdditionalExpences);
+    console.log(incomePeriodValue);
+    console.log(targetMonthValue);
+    console.log(salaryAmount);
+    console.log(incomeTitle);
+    console.log(incomeAmount);
+    console.log(expencesTitle);
+    console.log(expencesAmount);
+    console.log(additionalExpencesItem);
+    console.log(depositAmount);
+    console.log(depositPercent);
+    console.log(targetAmount);
+    console.log(periodSelect);
