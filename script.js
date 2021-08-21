@@ -1,6 +1,8 @@
 'use strict';
-const button = document.getElementById('start');
-const buttonPlusIncome = document.getElementsByTagName('button')[0];
+const start = document.getElementById('start');
+const btnPlus = document.getElementsByTagName('button');
+const incomePlus =btnPlus[0];
+const expensesPlus = btnPlus[1];
 const buttonPlusExpences = document.getElementsByTagName('button')[1];
 const checkBox = document.querySelector('#deposit-check');
 const additionalIncomeButton1 = document.querySelectorAll('.additional_income-item')[0];
@@ -16,7 +18,7 @@ const salaryAmount = document.querySelector('.salary-amount');
 const incomeTitle = document.querySelector('.income-title');
 const incomeAmount = document.querySelector('.income-amount');
 const expencesTitle = document.querySelector('.expenses-title');
-const expencesAmount = document.querySelector('.expenses-amount');
+let expensesItems = document.querySelectorAll('.expenses-items'); 
 const additionalExpencesItem = document.querySelector('.additional_expenses-item');
 const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
@@ -29,32 +31,52 @@ let isNumber = function(n) {
 };
 
 
-let money,
-start = function() {
-  do {
-  money = prompt('Ваш месячный доход?');
-  }
-  while(!isNumber(money)); 
-};
-
-start();
-
-
 let appData = {
   sum: 0,
   income: {},
-  budget: money,
+  budget: 0,
   budgetDay: 0, 
   budgetMonth: 0,
   expencesMonth: 0,
   addIncome: [],
-  expences: {},
+  expenses: {},
   addExpences: [],
   deposit: false,
   percentDeposit: 0,
   moneyDeposit: 0, 
   mission: 50000,
   period: 3,
+  start: function() {
+    if(salaryAmount.value === '') {
+    alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
+    return;
+  }
+  appData.budget = salaryAmount.value;
+
+  appData.getExpenses();
+
+    //appData.asking();
+    //appData.getExpencesMonth();
+    //appData.getBudget();
+
+  },
+  addExpensesBlock: function() {
+    let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
+    expensesItems = document.querySelectorAll('.expenses-items');
+    if(expensesItems.length === 3) {
+      expensesPlus.style.display = 'none';
+    }
+  },
+  getExpenses: function() {
+    expensesItems.forEach(function(item) {
+      let itemExpenses = item.querySelector('.expenses-title').value;
+      let cashExpenses = item.querySelector('.expenses-amount').value;
+      if(itemExpenses !== '' && cashExpenses !== '') {
+        appData.expenses[itemExpenses] = cashExpenses;
+      }
+    });
+  },
   asking: function() {
     if(confirm('Есть ли у вас дополнительный источник заработка?')) {
     let itemIncome,
@@ -85,22 +107,6 @@ let appData = {
       newArray.push(appData.addExpences[i].trim().charAt(0).toLocaleUpperCase() + appData.addExpences[i].trim().substr(1).toLocaleLowerCase());
     appData.addExpences = newArray;
      console.log(appData.addExpences);
-    }
-
-
-    for (let i = 0; i < 2; i++) {
-    let str;
-    let num;
-    do {
-    str = prompt('Введите обязательную статью расходов');
-    }
-    while (isNumber(str));
-
-    do {
-    num = prompt('Во сколько это обойдется?');
-    }
-    while(!isNumber(num));
-     appData.expences[str] = num;
     }
 
        appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -152,42 +158,12 @@ let appData = {
   },
 };
 
-    for(let key in appData) {
+  start.addEventListener('click', appData.start);
+  expensesPlus.addEventListener('click', appData.addExpensesBlock);
+
+  for(let key in appData) {
       console.log('Наша программа включает в себя данные: ' + key + ':' + appData[key]);
     }
 
   
-    appData.asking();
-    appData.getExpencesMonth();
-    appData.getBudget();
-    appData.getTargetMonth(); 
-    appData.getStatusIncome();
-    appData.getInfoDeposit();
-    appData.calcSavedMoney();
-  
-    console.log('Расходы за месяц: ' + appData.expencesMonth);
-    console.log(appData.period);
-    console.log(appData.getStatusIncome());
 
-    console.log(button);
-    console.log(buttonPlusIncome);
-    console.log(buttonPlusExpences);
-    console.log(additionalIncomeButton1);
-    console.log(additionalIncomeButton2);
-    console.log(budgetMonthValue);
-    console.log(budgetDayValue);
-    console.log(expencesMonthValue);
-    console.log(additionalIncomeValue);
-    console.log(totalAdditionalExpences);
-    console.log(incomePeriodValue);
-    console.log(targetMonthValue);
-    console.log(salaryAmount);
-    console.log(incomeTitle);
-    console.log(incomeAmount);
-    console.log(expencesTitle);
-    console.log(expencesAmount);
-    console.log(additionalExpencesItem);
-    console.log(depositAmount);
-    console.log(depositPercent);
-    console.log(targetAmount);
-    console.log(periodSelect);
