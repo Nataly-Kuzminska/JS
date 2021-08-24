@@ -9,7 +9,7 @@ const additionalIncomeButton1 = document.querySelectorAll('.additional_income-it
 const additionalIncomeButton2 = document.querySelectorAll('.additional_income-item')[1];
 const budgetMonthValue = document.getElementsByClassName('result-total budget_month-value')[0];
 const budgetDayValue = document.getElementsByClassName('result-total budget_day-value')[0];
-const expencesMonthValue = document.getElementsByClassName('result-total expenses_month-value')[0];
+const expensesMonthValue = document.getElementsByClassName('result-total expenses_month-value')[0];
 const additionalIncomeValue = document.getElementsByClassName('result-total additional_income-value')[0];
 const totalAdditionalExpences = document.getElementsByClassName('result-total additional_expenses-value')[0];
 const incomePeriodValue = document.getElementsByClassName('result-total income_period-value')[0];
@@ -37,7 +37,7 @@ let appData = {
   budget: 0,
   budgetDay: 0, 
   budgetMonth: 0,
-  expencesMonth: 0,
+  expensesMonth: 0,
   addIncome: [],
   expenses: {},
   addExpences: [],
@@ -55,11 +55,19 @@ let appData = {
 
   appData.getExpenses();
 
-    //appData.asking();
-    //appData.getExpencesMonth();
-    //appData.getBudget();
+
+  appData.getExpensesMonth();
+  appData.getBudget();
+
+  appData.showResult();
 
   },
+  showResult: function() {
+    budgetMonthValue.value = appData.budgetMonth;
+    budgetDayValue.value = appData.budgetDay;
+    expensesMonthValue.value = appData.expensesMonth;
+  },
+
   addExpensesBlock: function() {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
@@ -112,13 +120,13 @@ let appData = {
        appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     },
-  getExpencesMonth: function() {
-    for(let key in appData.expences) {
-    appData.expencesMonth += +appData.expences[key];
+  getExpensesMonth: function() {
+    for(let key in appData.expenses) {
+    appData.expensesMonth += +appData.expenses[key];
     }
     },
   getBudget: function() {
-    appData.budgetMonth = appData.budget - appData.expencesMonth;
+    appData.budgetMonth = appData.budget - appData.expensesMonth;
     appData.budgetDay = Math.floor(appData.budgetMonth/30);
     },
 
