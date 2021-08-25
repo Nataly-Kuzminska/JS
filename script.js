@@ -5,13 +5,13 @@ const incomePlus =btnPlus[0];
 const expensesPlus = btnPlus[1];
 const buttonPlusExpences = document.getElementsByTagName('button')[1];
 const checkBox = document.querySelector('#deposit-check');
-const additionalIncomeButton1 = document.querySelectorAll('.additional_income-item')[0];
+const additionalIncomeItem = document.querySelectorAll('.additional_income-item')[0];
 const additionalIncomeButton2 = document.querySelectorAll('.additional_income-item')[1];
 const budgetMonthValue = document.getElementsByClassName('result-total budget_month-value')[0];
 const budgetDayValue = document.getElementsByClassName('result-total budget_day-value')[0];
 const expensesMonthValue = document.getElementsByClassName('result-total expenses_month-value')[0];
 const additionalIncomeValue = document.getElementsByClassName('result-total additional_income-value')[0];
-const totalAdditionalExpences = document.getElementsByClassName('result-total additional_expenses-value')[0];
+let additionalExpensesValue = document.getElementsByClassName('result-total additional_expenses-value')[0];
 const incomePeriodValue = document.getElementsByClassName('result-total income_period-value')[0];
 const targetMonthValue =document.getElementsByClassName('result-total target_month-value')[0];
 const salaryAmount = document.querySelector('.salary-amount');
@@ -19,12 +19,11 @@ const incomeTitle = document.querySelector('.income-title');
 const incomeAmount = document.querySelector('.income-amount');
 const expencesTitle = document.querySelector('.expenses-title');
 let expensesItems = document.querySelectorAll('.expenses-items'); 
-const additionalExpencesItem = document.querySelector('.additional_expenses-item');
 const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
-
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
 
 let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -40,7 +39,7 @@ let appData = {
   expensesMonth: 0,
   addIncome: [],
   expenses: {},
-  addExpences: [],
+  addExpenses: [],
   deposit: false,
   percentDeposit: 0,
   moneyDeposit: 0, 
@@ -58,7 +57,8 @@ let appData = {
 
   appData.getExpensesMonth();
   appData.getBudget();
-
+  appData.getAddExpenses();
+  appData.getAddIncome();
   appData.showResult();
 
   },
@@ -66,6 +66,8 @@ let appData = {
     budgetMonthValue.value = appData.budgetMonth;
     budgetDayValue.value = appData.budgetDay;
     expensesMonthValue.value = appData.expensesMonth;
+    additionalExpensesValue.value = appData.addExpenses.join(', ');
+    additionalIncomeValue.value = appData.addIncome.join(', ');
   },
 
   addExpensesBlock: function() {
@@ -82,6 +84,23 @@ let appData = {
       let cashExpenses = item.querySelector('.expenses-amount').value;
       if(itemExpenses !== '' && cashExpenses !== '') {
         appData.expenses[itemExpenses] = cashExpenses;
+      }
+    });
+  },
+  getAddExpenses: function(){
+    let addExpenses = additionalExpensesItem.value.split(',');
+    addExpenses.forEach(function(item){
+      item = item.trim();
+      if(item !== '') {
+        appData.addExpenses.push(item);
+      }
+    });
+  },
+  getAddIncome: function(){
+    additionalIncomeItem.forEach(function(item){
+      let itemValue = item.value.trim();
+      if(itemValue !== '') {
+        appData.addIncome.push(itemValue);
       }
     });
   },
@@ -108,13 +127,13 @@ let appData = {
       appData.income[itemIncome] = cashIncome;
     }
 
-    let addExpences = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-    appData.addExpences = addExpences.toLowerCase().split(', '); 
-    for(let i=0; i<appData.addExpences.length; i++) {
+    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+    appData.addExpenses = addExpenses.toLowerCase().split(', '); 
+    for(let i=0; i<appData.addExpenses.length; i++) {
       let newArray = [];
-      newArray.push(appData.addExpences[i].trim().charAt(0).toLocaleUpperCase() + appData.addExpences[i].trim().substr(1).toLocaleLowerCase());
-    appData.addExpences = newArray;
-     console.log(appData.addExpences);
+      newArray.push(appData.addExpenses[i].trim().charAt(0).toLocaleUpperCase() + appData.addExpenses[i].trim().substr(1).toLocaleLowerCase());
+    appData.addExpenses = newArray;
+     console.log(appData.addExpenses);
     }
 
        appData.deposit = confirm('Есть ли у вас депозит в банке?');
