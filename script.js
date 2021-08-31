@@ -1,5 +1,5 @@
 'use strict';
-const start = document.getElementById('start');
+const startBtn = document.getElementById('start');
 const btnPlus = document.getElementsByTagName('button');
 const incomePlus =btnPlus[0];
 const expensesPlus = btnPlus[1];
@@ -46,6 +46,7 @@ let appData = {
   percentDeposit: 0,
   moneyDeposit: 0, 
   start: function() {
+    startBtn.setAttribute('disabled', true);
     if(salaryAmount.value === '') {
     alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
     return;
@@ -70,11 +71,7 @@ let appData = {
     additionalIncomeValue.value = appData.addIncome.join(', ');
     targetMonthValue.value = Math.ceil(appData.getTargetMonth());
     incomePeriodValue.value = appData.calcPeriod();
-    periodSelect.addEventListener('input', appData.rangeValue);
-  },
-
-  rangeValue: function() {
-
+    
   },
 
   addExpensesBlock: function() {
@@ -184,6 +181,9 @@ let appData = {
   start.addEventListener('click', appData.start);
   expensesPlus.addEventListener('click', appData.addExpensesBlock);
   incomePlus.addEventListener('click', appData.addIncomeBlock);
+  periodSelect.addEventListener('input', function() {
+    incomePeriodValue.textContent = appData.budgetMonth * periodSelect.value; 
+  }
   
 
 
